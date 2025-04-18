@@ -1,0 +1,47 @@
+#include <iostream>
+using namespace std;
+
+int sumOfDigits(int n) {
+    if (n == 0) return 0;
+    return n % 10 + sumOfDigits(n / 10);
+}
+
+int reverseNumber(int n, int rev = 0) {
+    if (n == 0) return rev;
+    return reverseNumber(n / 10, rev * 10 + n % 10);
+}
+
+int reduceToZero(int num) {
+    if (num == 0) return 0;
+    if (num % 2 == 0) return 1 + reduceToZero(num / 2);
+    return 1 + reduceToZero(num - 1);
+}
+
+int fun(int n) {
+    if (n <= 1) return 1;
+    if (n % 2 == 0) return fun(n / 2);
+    return fun(n / 2) + fun(n / 2 + 1);
+}
+
+int main() {
+    int num = 12345;
+    cout << "Sum of digits: " << sumOfDigits(num) << endl;
+
+    cout << "Reversed number: " << reverseNumber(num) << endl;
+
+    int reduceNum = 14;
+    cout << "Steps to reduce to zero: " << reduceToZero(reduceNum) << endl;
+
+    int n = 5;
+    cout << "Output of fun(" << n << "): " << fun(n) << endl;
+
+    return 0;
+}
+
+
+// op
+
+Sum of digits: 15
+Reversed number: 54321
+Steps to reduce to zero: 5
+Output of fun(5): 3
