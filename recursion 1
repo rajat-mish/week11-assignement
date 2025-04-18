@@ -1,0 +1,57 @@
+#include <iostream>
+using namespace std;
+
+void printSequence(int n) {
+    if (n == 0) return;
+    cout << n << " ";
+    printSequence(n - 1);
+    cout << n << " ";
+}
+
+int sumOddNumbers(int a, int b) {
+    if (a > b) return 0;
+    if (a % 2 != 0)
+        return a + sumOddNumbers(a + 2, b);
+    else
+        return sumOddNumbers(a + 1, b);
+}
+
+bool isPowerOfTwo(int n) {
+    if (n == 1) return true;
+    if (n <= 0 || n % 2 != 0) return false;
+    return isPowerOfTwo(n / 2);
+}
+
+int countWays(int n) {
+    if (n == 0) return 1;
+    if (n < 0) return 0;
+    return countWays(n - 1) + countWays(n - 2) + countWays(n - 3);
+}
+
+int main() {
+    int n = 5;
+    printSequence(n);
+    cout << endl;
+
+    int a = 1, b = 10;
+    cout << "Sum of odd numbers from " << a << " to " << b << " is: " << sumOddNumbers(a, b) << endl;
+
+    int num = 16;
+    if (isPowerOfTwo(num))
+        cout << num << " is a power of 2" << endl;
+    else
+        cout << num << " is not a power of 2" << endl;
+
+    int stairs = 4;
+    cout << "Number of ways to reach the " << stairs << "th stair: " << countWays(stairs) << endl;
+
+    return 0;
+}
+
+//output 
+
+
+1 2 3 4 5 4 3 2 1 
+Sum of odd numbers from 1 to 10 is: 25
+16 is a power of 2
+Number of ways to reach the 4th stair: 7
